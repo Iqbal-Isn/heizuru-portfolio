@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import type { PortfolioItem } from "../data/portfolio";
 
 interface Props {
@@ -8,21 +9,37 @@ interface Props {
 }
 
 const { item, eager = false } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,webp}');
+const imagePath = item.image ? `/src/assets${item.image}` : null;
+const imageData = imagePath && images[imagePath] ? await images[imagePath]() : null;
 ---
 
 <article
   class="group flex flex-col overflow-hidden rounded-2xl border border-whisper/60 bg-surface shadow-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-card-hover"
 >
   <div class="overflow-hidden">
-    <img
-      src={item.image ? item.image : `https://picsum.photos/seed/${item.seed}/800/600`}
-      alt={`Konsep desain ${item.title}`}
-      width="800"
-      height="600"
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      class="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
-    />
+    {imageData ? (
+      <Image
+        src={imageData.default}
+        alt={`Konsep desain ${item.title}`}
+        width={800}
+        height={600}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        class="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
+      />
+    ) : (
+      <img
+        src={`https://picsum.photos/seed/${item.seed}/800/600`}
+        alt={`Konsep desain ${item.title}`}
+        width="800"
+        height="600"
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        class="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
+      />
+    )}
   </div>
   <div class="flex flex-1 flex-col p-6">
     <div class="flex items-center gap-2">
