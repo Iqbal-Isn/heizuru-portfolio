@@ -1,1 +1,27 @@
-node_modules
+# build output
+dist/
+.netlify/
+.vercel/
+
+# dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Astro files
+.astro/
+
+# IDE files
+.vscode/
+.idea/
+
+# AI files
+.agents/
+skills-lock.json
+
+# Environment
+.env
+.env.*
+!.env.example
