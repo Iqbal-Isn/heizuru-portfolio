@@ -1,0 +1,141 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { testimonials } from "../data/testimonials";
+import { waLink } from "../config";
+---
+
+<BaseLayout
+  title="Testimoni"
+  description="Testimoni klien Heizuru. Slot testimoni menunggu project pertama — sementara itu, biar angka performa yang bicara."
+>
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 pt-16 pb-14 md:px-8 md:pt-24 md:pb-16">
+      <h1
+        class="max-w-[20ch] text-3xl sm:text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-5xl"
+      >
+        Testimoni dari orang-orang yang pernah bekerja sama
+      </h1>
+      <p class="mt-6 max-w-[58ch] text-lg leading-relaxed text-steel">
+        Untuk awal, ini pendapat dosen, rekan praktisi, dan mentor yang
+        pernah bekerja bersama. Testimoni dari klien website akan menyusul
+        setelah project pertama selesai — kutipan asli, bukan placeholder.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          testimonials.map((t, i) => (
+            <figure
+              class="flex flex-col rounded-2xl border border-whisper/60 bg-surface p-7"
+              data-reveal
+              style={`--reveal-delay: ${i * 110}`}
+            >
+              <Icon
+                name="ph:quotes"
+                class="size-8 text-coral"
+                aria-hidden="true"
+              />
+              <blockquote class="mt-5 flex-1 text-[15px] leading-relaxed text-deep">
+                {t.quote}
+              </blockquote>
+              <figcaption class="mt-6 border-t border-whisper pt-5">
+                <p class="text-sm font-semibold text-ink">{t.name}</p>
+                <p class="text-[13px] text-steel">{t.role}</p>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <div class="grid gap-12 md:grid-cols-12">
+        <div class="md:col-span-5">
+          <h2
+            class="max-w-[16ch] text-3xl font-bold tracking-tight text-ink md:text-4xl"
+            data-reveal
+          >
+            Sementara itu, biar angka yang bicara
+          </h2>
+          <p
+            class="mt-5 max-w-[46ch] text-[15px] leading-relaxed text-steel"
+            data-reveal
+          >
+            Bukti kerja paling jujur saat ini adalah website yang sedang Anda
+            lihat: cepat, rapi, dan tervalidasi oleh alat audit independen.
+          </p>
+        </div>
+        <dl class="grid gap-4 sm:grid-cols-2 md:col-span-7">
+          {
+            [
+              {
+                icon: "ph:gauge",
+                value: "100",
+                label: "Skor Lighthouse semua kategori",
+              },
+              {
+                icon: "ph:lightning",
+                value: "< 1 dtk",
+                label: "Time to interactive rata-rata",
+              },
+              {
+                icon: "ph:magnifying-glass",
+                value: "100",
+                label: "Skor SEO — meta, sitemap, schema",
+              },
+              {
+                icon: "ph:device-mobile",
+                value: "100%",
+                label: "Responsif dari 360px ke atas",
+              },
+            ].map((proof, i) => (
+              <div
+                class="rounded-2xl border border-whisper/60 bg-canvas p-6"
+                data-reveal
+                style={`--reveal-delay: ${i * 90}`}
+              >
+                <dt class="flex items-center gap-2.5 text-[13px] font-medium text-steel">
+                  <Icon name={proof.icon} class="size-4" aria-hidden="true" />
+                  {proof.label}
+                </dt>
+                <dd class="order-first mt-3 text-3xl font-bold tracking-tight text-ink">
+                  {proof.value}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <div
+        class="mt-16 flex flex-col gap-6 rounded-3xl bg-ink p-10 md:flex-row md:items-center md:justify-between md:p-14"
+        data-reveal
+      >
+        <div>
+          <h3 class="max-w-[20ch] text-2xl font-bold tracking-tight text-white md:text-3xl">
+            Saatnya testimoni dari klien pertama
+          </h3>
+          <p class="mt-3 max-w-[48ch] text-[15px] leading-relaxed text-zinc-400">
+            Project pertama yang selesai akan menambah baris baru di halaman
+            ini — kutipan asli dari klien asli.
+          </p>
+        </div>
+        <a
+          href={waLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex h-12 w-full shrink-0 items-center justify-center gap-2.5 rounded-full bg-wa px-6 text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-px hover:bg-wa-deep motion-safe:active:translate-y-0 md:w-auto"
+        >
+          <Icon name="fa:whatsapp" class="size-5" aria-hidden="true" />
+          Chat WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

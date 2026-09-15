@@ -1,0 +1,385 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PortfolioCard from "../components/PortfolioCard.astro";
+import PricingSection from "../components/PricingSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { portfolioItems } from "../data/portfolio";
+import { testimonials } from "../data/testimonials";
+import { waLink } from "../config";
+
+const featured = portfolioItems.filter((item) => item.featured).slice(0, 6);
+
+const services = [
+  {
+    number: "01",
+    title: "Landing Page",
+    description:
+      "Satu halaman fokus untuk kampanye, produk, atau layanan tunggal. Ideal untuk trafik dari iklan dan media sosial.",
+  },
+  {
+    number: "02",
+    title: "Company Profile",
+    description:
+      "Website 5–7 halaman lengkap: beranda, tentang, layanan, portofolio, proses, dan kontak yang saling terhubung.",
+  },
+  {
+    number: "03",
+    title: "Website Custom",
+    description:
+      "Pengembangan fitur khusus seperti integrasi database, payment gateway, sistem booking, dan kebutuhan kustom lainnya.",
+  },
+];
+
+const advantages = [
+  {
+    icon: "ph:gauge",
+    title: "Performa sebagai bukti",
+    description:
+      "Situs ini sendiri adalah contoh kerja: skor Lighthouse 100, halaman yang langsung tampil tanpa menunggu.",
+  },
+  {
+    icon: "ph:invoice",
+    title: "Harga transparan",
+    description:
+      "Scope, harga, dan timeline jelas sebelum sepakat. Tidak ada biaya siluman di tengah pengerjaan.",
+  },
+  {
+    icon: "ph:list-checks",
+    title: "Proses terstruktur",
+    description:
+      "Lima tahap kerja dengan deliverable yang disepakati di awal — Anda tahu posisi proyek setiap saat.",
+  },
+  {
+    icon: "ph:handshake",
+    title: "Komunikasi langsung",
+    description:
+      "Tidak ada perantara. Anda bicara langsung dengan orang yang mengerjakan website Anda dari awal sampai live.",
+  },
+];
+---
+
+<BaseLayout
+  title="Heizuru - Jasa Pembuatan Website Company Profile & Landing Page"
+  description="Website company profile dan landing page yang cepat, SEO-friendly, dan fokus konversi. Skor performa tervalidasi, hasil yang bisa diukur."
+>
+  <section class="relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1800&q=80');"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-white/80 md:bg-gradient-to-r md:from-white md:via-white/75 md:to-transparent"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div
+      class="relative mx-auto grid max-w-[1200px] gap-14 px-5 pt-16 pb-20 md:grid-cols-12 md:px-8 md:pt-24 md:pb-28 lg:gap-10"
+    >
+      <div class="flex flex-col justify-center md:col-span-7 lg:col-span-6">
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.18em] text-steel"
+        >
+          Jasa Pembuatan Website
+        </p>
+        <h1
+          class="mt-5 text-3xl sm:text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-5xl lg:text-6xl"
+        >
+          Company profile &amp; landing page yang cepat dan mengonversi.
+        </h1>
+        <p
+          class="mt-6 max-w-[52ch] text-lg leading-relaxed text-steel"
+        >
+          Skor Lighthouse sempurna di semua kategori, SEO on-page lengkap,
+          siap menjadi etalase yang bekerja untuk bisnis Anda.
+        </p>
+        <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+          <a
+            href="/kontak"
+            class="inline-flex h-13 w-full items-center justify-center gap-2 rounded-full bg-coral px-7 text-[15px] font-semibold text-white transition-transform duration-300 ease-out hover:-translate-y-px motion-safe:active:translate-y-0 sm:w-auto"
+          >
+            Mulai Proyek
+            <Icon name="ph:arrow-right" class="size-4" aria-hidden="true" />
+          </a>
+          <a
+            href="/portofolio"
+            class="inline-flex h-13 w-full items-center justify-center rounded-full bg-ink px-7 text-[15px] font-semibold text-white transition-transform duration-300 ease-out hover:-translate-y-px motion-safe:active:translate-y-0 sm:w-auto"
+          >
+            Lihat Portofolio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-ink">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-16">
+      <dl class="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 md:gap-x-4">
+        {
+          [
+            { value: "100", label: "Skor performa situs ini" },
+            { value: "<1 dtk", label: "Waktu muat rata-rata" },
+            { value: "8", label: "Industri siap ditangani" },
+            { value: "5–7 hari", label: "Pengerjaan landing page" },
+          ].map((stat) => (
+            <div
+              class="flex flex-col gap-2 border-l border-white/10 pl-4 md:pl-6"
+              data-reveal
+            >
+              <dt class="order-2 text-sm text-zinc-400">{stat.label}</dt>
+              <dd class="order-1 text-3xl font-bold tracking-tight text-white md:text-4xl">
+                {stat.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <h2
+        class="max-w-[20ch] text-3xl font-bold tracking-tight text-ink md:text-4xl"
+        data-reveal
+      >
+        Apa yang bisa dikerjakan
+      </h2>
+      <div class="mt-10">
+        {
+          services.map((service, i) => (
+            <a
+              href="/layanan"
+              class="group grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-3 border-t border-whisper/60 py-8 transition-colors last:border-b hover:bg-canvas/60 md:grid-cols-12 md:gap-x-8 md:py-10"
+              data-reveal
+              style={`--reveal-delay: ${i * 90}`}
+            >
+              <span class="pt-1 font-mono text-sm text-steel md:col-span-1 md:pt-2">
+                {service.number}
+              </span>
+              <h3 class="text-2xl font-bold tracking-tight text-ink transition-colors group-hover:text-coral-deep md:col-span-4 md:pt-1 md:text-3xl">
+                {service.title}
+              </h3>
+              <p class="col-span-2 max-w-[52ch] text-[15px] leading-relaxed text-steel md:col-span-6 md:col-start-7">
+                {service.description}
+              </p>
+              <span class="hidden items-center justify-self-end rounded-full border border-whisper p-3 text-steel transition-all duration-300 group-hover:border-coral group-hover:text-coral md:col-span-1 md:flex">
+                <Icon name="ph:arrow-up-right" class="size-5" aria-hidden="true" />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="mx-auto grid max-w-[1200px] gap-12 px-5 py-20 md:grid-cols-12 md:px-8 md:py-28">
+      <div class="md:col-span-4">
+        <h2
+          class="text-3xl font-bold tracking-tight text-ink md:text-4xl"
+          data-reveal
+        >
+          Kenapa Heizuru
+        </h2>
+        <p class="mt-5 max-w-[40ch] text-[15px] leading-relaxed text-steel" data-reveal>
+          Banyak jasa bisa membuat website "jadi". Heizuru fokus pada website
+          yang bekerja: cepat dimuat, mudah ditemukan, dan mengarahkan
+          pengunjung ke tindakan.
+        </p>
+      </div>
+      <ul class="md:col-span-7 md:col-start-6">
+        {
+          advantages.map((adv, i) => (
+            <li
+              class="flex gap-5 border-t border-whisper py-7 last:border-b"
+              data-reveal
+              style={`--reveal-delay: ${i * 90}`}
+            >
+              <span class="flex size-11 shrink-0 items-center justify-center rounded-full border border-whisper bg-surface text-coral-deep">
+                <Icon name={adv.icon} class="size-5" aria-hidden="true" />
+              </span>
+              <div>
+                <h3 class="text-lg font-bold tracking-tight text-ink">
+                  {adv.title}
+                </h3>
+                <p class="mt-1.5 max-w-[56ch] text-[15px] leading-relaxed text-steel">
+                  {adv.description}
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div class="max-w-[44ch]">
+          <h2
+            class="text-3xl font-bold tracking-tight text-ink md:text-4xl"
+            data-reveal
+          >
+            Portofolio
+          </h2>
+          <p
+            class="mt-3 text-[15px] leading-relaxed text-steel"
+            data-reveal
+          >
+            Hasil pekerjaan dari berbagai industri — mulai dari landing page
+            kampanye hingga company profile multi-halaman.
+          </p>
+        </div>
+        <a
+          href="/portofolio"
+          class="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-ink transition-colors hover:text-coral-deep"
+          data-reveal
+        >
+          Lihat Semua Portofolio
+          <Icon name="ph:arrow-right" class="size-4" aria-hidden="true" />
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          featured.map((item, i) => (
+            <div data-reveal style={`--reveal-delay: ${(i % 3) * 110}`}>
+              <PortfolioCard item={item} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 pt-14 pb-10 md:px-8 md:pt-28 md:pb-14">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div class="max-w-[44ch]">
+          <h2
+            class="text-3xl font-bold tracking-tight text-ink md:text-4xl"
+            data-reveal
+          >
+            Paket layanan
+          </h2>
+          <p
+            class="mt-3 text-[15px] leading-relaxed text-steel"
+            data-reveal
+          >
+            Dua paket standar untuk kebutuhan paling umum, plus jalur khusus
+            untuk scope di luar itu.
+          </p>
+        </div>
+        <a
+          href="/layanan"
+          class="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-ink transition-colors hover:text-coral-deep"
+          data-reveal
+        >
+          Detail Paket & Layanan
+          <Icon name="ph:arrow-right" class="size-4" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <PricingSection />
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <div class="grid gap-10 md:grid-cols-12 md:gap-12">
+        <div class="md:col-span-5">
+          <h2
+            class="text-3xl font-bold tracking-tight text-ink md:text-4xl"
+            data-reveal
+          >
+            Apa kata orang-orang yang pernah bekerja sama
+          </h2>
+          <p
+            class="mt-5 max-w-[44ch] text-[15px] leading-relaxed text-steel"
+            data-reveal
+          >
+            Testimoni dari klien website menyusul setelah project pertama
+            selesai. Untuk awal, ini pendapat dosen, rekan praktisi, dan
+            mentor yang pernah bekerja bersama di berbagai proyek.
+          </p>
+          <a
+            href={waLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-7 inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-ink transition-colors hover:text-coral-deep"
+            data-reveal
+          >
+            Diskusikan project Anda
+            <Icon name="ph:arrow-right" class="size-4" aria-hidden="true" />
+          </a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-3 md:col-span-7">
+          {
+            testimonials.map((t, i) => (
+              <div
+                class="flex flex-col rounded-2xl border border-whisper/60 bg-canvas p-6"
+                data-reveal
+                style={`--reveal-delay: ${i * 90}`}
+              >
+                <Icon
+                  name="ph:quotes"
+                  class="size-7 text-coral"
+                  aria-hidden="true"
+                />
+                <p class="mt-4 flex-1 text-[15px] leading-relaxed text-deep">
+                  {t.quote}
+                </p>
+                <div class="mt-5 border-t border-whisper pt-4">
+                  <p class="text-sm font-semibold text-ink">{t.name}</p>
+                  <p class="text-[13px] text-steel">{t.role}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqSection />
+
+  <section class="bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <div
+        class="flex flex-col gap-8 rounded-3xl bg-ink p-10 md:flex-row md:items-center md:justify-between md:p-16"
+        data-reveal
+      >
+        <div>
+          <h2 class="max-w-[18ch] text-3xl font-bold tracking-tight text-white md:text-4xl">
+            Punya proyek dalam pikiran?
+          </h2>
+          <p class="mt-4 max-w-[46ch] text-[15px] leading-relaxed text-zinc-400">
+            Ceritakan kebutuhan Anda — gratis dikonsultasikan dulu, tanpa
+            komitmen. Balasan biasanya di bawah 24 jam.
+          </p>
+        </div>
+        <div class="flex shrink-0 flex-col gap-4 sm:flex-row sm:flex-wrap">
+          <a
+            href={waLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-full bg-wa px-7 text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-px hover:bg-wa-deep motion-safe:active:translate-y-0 sm:w-auto"
+          >
+            <Icon name="fa:whatsapp" class="size-5" aria-hidden="true" />
+            Chat WhatsApp
+          </a>
+          <a
+            href="/kontak"
+            class="inline-flex h-13 w-full items-center justify-center rounded-full border border-white/25 px-7 text-[15px] font-semibold text-white transition-colors hover:border-white/60 sm:w-auto"
+          >
+            Kirim Inquiry
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

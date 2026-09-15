@@ -1,0 +1,304 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, waLink } from "../config";
+---
+
+<BaseLayout
+  title="Kontak"
+  description="Hubungi Heizuru untuk konsultasi pembuatan website. WhatsApp, email, atau kirim inquiry lengkap dengan jenis project dan budget."
+>
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 pt-16 pb-14 md:px-8 md:pt-24 md:pb-20">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <h1
+            class="max-w-[16ch] text-3xl sm:text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-5xl"
+          >
+            Ceritakan proyek Anda.
+          </h1>
+          <p class="mt-6 max-w-[50ch] text-lg leading-relaxed text-steel">
+            Semakin lengkap informasinya, semakin cepat estimasi diberikan.
+            Konsultasi awal gratis dan tanpa komitmen.
+          </p>
+
+          <div class="mt-10 space-y-4">
+            <a
+              href={waLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-4 rounded-2xl border border-whisper/60 bg-surface p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card"
+            >
+              <span
+                class="flex size-12 shrink-0 items-center justify-center rounded-full bg-wa text-white"
+              >
+                <Icon name="fa:whatsapp" class="size-6" aria-hidden="true" />
+              </span>
+              <span>
+                <span class="block text-sm text-steel">WhatsApp — tercepat</span>
+                <span class="block text-[15px] font-semibold text-ink">
+                  {SITE.whatsappDisplay}
+                </span>
+              </span>
+              <Icon
+                name="ph:arrow-up-right"
+                class="ml-auto size-5 text-steel transition-colors group-hover:text-coral-deep"
+                aria-hidden="true"
+              />
+            </a>
+
+            <a
+              href={`mailto:${SITE.email}`}
+              class="group flex items-center gap-4 rounded-2xl border border-whisper/60 bg-surface p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card"
+            >
+              <span
+                class="flex size-12 shrink-0 items-center justify-center rounded-full bg-ink text-coral"
+              >
+                <Icon name="ph:envelope-simple" class="size-6" aria-hidden="true" />
+              </span>
+              <span>
+                <span class="block text-sm text-steel">Email</span>
+                <span class="block text-[15px] font-semibold text-ink">
+                  {SITE.email}
+                </span>
+              </span>
+              <Icon
+                name="ph:arrow-up-right"
+                class="ml-auto size-5 text-steel transition-colors group-hover:text-coral-deep"
+                aria-hidden="true"
+              />
+            </a>
+
+            <div
+              class="flex items-center gap-4 rounded-2xl border border-whisper/60 bg-canvas p-5"
+            >
+              <span
+                class="flex size-12 shrink-0 items-center justify-center rounded-full bg-ink text-coral"
+              >
+                <Icon name="ph:clock" class="size-6" aria-hidden="true" />
+              </span>
+              <span>
+                <span class="block text-sm text-steel">Jam respons</span>
+                <span class="block text-[15px] font-semibold text-ink">
+                  Senin–Sabtu, balasan &lt; 24 jam
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div
+            class="rounded-2xl border border-whisper/60 bg-canvas p-7 md:p-10"
+            data-reveal
+          >
+            <form
+              id="inquiry-form"
+              method="POST"
+              action="https://api.web3forms.com/submit"
+              class="grid gap-6"
+            >
+              <input type="hidden" name="access_key" value="YOUR-ACCESS-KEY-HERE" />
+              <input
+                type="checkbox"
+                name="botcheck"
+                class="hidden"
+                aria-hidden="true"
+                tabindex="-1"
+              />
+
+              <div class="grid gap-6 sm:grid-cols-2">
+                <div class="grid gap-2">
+                  <label for="nama" class="text-sm font-semibold text-ink"
+                    >Nama</label
+                  >
+                  <input
+                    id="nama"
+                    type="text"
+                    name="nama"
+                    required
+                    autocomplete="name"
+                    placeholder="Nama Anda"
+                    class="min-h-12 rounded-xl border border-whisper bg-surface px-4 text-base text-ink placeholder:text-steel/70 focus:border-coral focus:ring-2 focus:ring-coral/30 focus:outline-none"
+                  />
+                </div>
+                <div class="grid gap-2">
+                  <label for="email" class="text-sm font-semibold text-ink"
+                    >Email</label
+                  >
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    autocomplete="email"
+                    placeholder="nama@bisnis.com"
+                    class="min-h-12 rounded-xl border border-whisper bg-surface px-4 text-base text-ink placeholder:text-steel/70 focus:border-coral focus:ring-2 focus:ring-coral/30 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div class="grid gap-6 sm:grid-cols-2">
+                <div class="grid gap-2">
+                  <label for="whatsapp" class="text-sm font-semibold text-ink"
+                    >Nomor WhatsApp</label
+                  >
+                  <input
+                    id="whatsapp"
+                    type="tel"
+                    name="whatsapp"
+                    required
+                    autocomplete="tel"
+                    placeholder="08xxxxxxxxxx"
+                    class="min-h-12 rounded-xl border border-whisper bg-surface px-4 text-base text-ink placeholder:text-steel/70 focus:border-coral focus:ring-2 focus:ring-coral/30 focus:outline-none"
+                  />
+                </div>
+                <div class="grid gap-2">
+                  <label for="jenis" class="text-sm font-semibold text-ink"
+                    >Jenis project</label
+                  >
+                  <select
+                    id="jenis"
+                    name="jenis_project"
+                    required
+                    class="min-h-12 rounded-xl border border-whisper bg-surface px-4 text-base text-ink focus:border-coral focus:ring-2 focus:ring-coral/30 focus:outline-none"
+                  >
+                    <option value="" selected disabled>Pilih jenis project</option>
+                    <option value="Landing Page">Landing Page</option>
+                    <option value="Company Profile">Company Profile</option>
+                    <option value="Kebutuhan khusus">Kebutuhan khusus</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid gap-2">
+                <label for="budget" class="text-sm font-semibold text-ink"
+                  >Rentang budget</label
+                >
+                <select
+                  id="budget"
+                  name="budget"
+                  required
+                  class="min-h-12 rounded-xl border border-whisper bg-surface px-4 text-base text-ink focus:border-coral focus:ring-2 focus:ring-coral/30 focus:outline-none"
+                >
+                  <option value="" selected disabled>Pilih rentang budget</option>
+                  <option value="Di bawah Rp 2 juta">Di bawah Rp 2 juta</option>
+                  <option value="Rp 2–5 juta">Rp 2–5 juta</option>
+                  <option value="Rp 5–10 juta">Rp 5–10 juta</option>
+                  <option value="Di atas Rp 10 juta">Di atas Rp 10 juta</option>
+                  <option value="Belum tahu">Belum tahu — butuh rekomendasi</option>
+                </select>
+              </div>
+
+              <div class="grid gap-2">
+                <label for="deskripsi" class="text-sm font-semibold text-ink"
+                  >Deskripsi kebutuhan</label
+                >
+                <textarea
+                  id="deskripsi"
+                  name="deskripsi"
+                  required
+                  rows="5"
+                  placeholder="Bisnis apa yang dijalankan, tujuan website, konten yang sudah ada, deadline yang diincar — tulis se detail yang bisa."
+                  class="rounded-xl border border-whisper bg-surface px-4 py-3 text-base text-ink placeholder:text-steel/70 focus:border-coral focus:ring-2 focus:ring-coral/30 focus:outline-none"
+                ></textarea>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  class="inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-full bg-coral text-[15px] font-semibold text-white transition-transform duration-300 ease-out hover:-translate-y-px motion-safe:active:translate-y-0 sm:w-auto sm:px-10"
+                >
+                  <Icon name="ph:paper-plane-tilt" class="size-5" aria-hidden="true" />
+                  Kirim Inquiry
+                </button>
+                <p class="mt-4 text-[13px] leading-relaxed text-steel">
+                  Data dikirim via Web3Forms langsung ke email — tidak disimpan
+                  di server mana pun.
+                </p>
+              </div>
+            </form>
+
+            <div
+              id="form-success"
+              class="hidden flex-col items-start gap-3 py-8"
+              role="status"
+            >
+              <span
+                class="flex size-12 items-center justify-center rounded-full bg-coral/15 text-coral-deep"
+              >
+                <Icon name="ph:check-circle" class="size-6" aria-hidden="true" />
+              </span>
+              <h2 class="text-xl font-bold tracking-tight text-ink">
+                Inquiry terkirim.
+              </h2>
+              <p class="max-w-[48ch] text-[15px] leading-relaxed text-steel">
+                Terima kasih. Inquiry Anda sudah masuk — balasan dikirim ke
+                email atau WhatsApp dalam 24 jam kerja.
+              </p>
+            </div>
+
+            <div
+              id="form-error"
+              class="hidden flex-col items-start gap-3 py-8"
+              role="alert"
+            >
+              <span
+                class="flex size-12 items-center justify-center rounded-full bg-coral/15 text-coral-deep"
+              >
+                <Icon name="ph:warning-circle" class="size-6" aria-hidden="true" />
+              </span>
+              <h2 class="text-xl font-bold tracking-tight text-ink">
+                Gagal terkirim.
+              </h2>
+              <p class="max-w-[48ch] text-[15px] leading-relaxed text-steel">
+                Ada kendala saat mengirim. Silakan coba lagi, atau langsung
+                hubungi via
+                <a
+                  href={waLink()}
+                  class="font-semibold text-coral-deep underline underline-offset-2"
+                  >WhatsApp</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById("inquiry-form") as HTMLFormElement;
+    const success = document.getElementById("form-success");
+    const error = document.getElementById("form-error");
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitButton = form.querySelector<HTMLButtonElement>(
+        "button[type=submit]",
+      );
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Mengirim...";
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+        });
+        if (!response.ok) throw new Error("Request failed");
+        form.classList.add("hidden");
+        success?.classList.remove("hidden");
+        success?.classList.add("flex");
+      } catch {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = "Kirim Inquiry";
+        }
+        error?.classList.remove("hidden");
+        error?.classList.add("flex");
+      }
+    });
+  </script>
+</BaseLayout>

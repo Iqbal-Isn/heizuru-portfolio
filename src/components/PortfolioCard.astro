@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon/components";
+import type { PortfolioItem } from "../data/portfolio";
+
+interface Props {
+  item: PortfolioItem;
+  eager?: boolean;
+}
+
+const { item, eager = false } = Astro.props;
+---
+
+<article
+  class="group flex flex-col overflow-hidden rounded-2xl border border-whisper/60 bg-surface shadow-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-card-hover"
+>
+  <div class="overflow-hidden">
+    <img
+      src={item.image ? item.image : `https://picsum.photos/seed/${item.seed}/800/600`}
+      alt={`Konsep desain ${item.title}`}
+      width="800"
+      height="600"
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      class="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
+    />
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    <div class="flex items-center gap-2">
+      <span
+        class="rounded-full border border-whisper px-3 py-1 text-xs font-medium text-steel"
+      >
+        {item.industry}
+      </span>
+      <span class="rounded-full border border-whisper px-3 py-1 text-xs font-medium text-steel">
+        {item.pages === 1 ? "1 halaman" : `${item.pages} halaman`}
+      </span>
+    </div>
+    <h3 class="mt-4 text-lg font-bold tracking-tight text-ink">
+      {item.title}
+    </h3>
+    <p class="mt-2 flex-1 text-[15px] leading-relaxed text-steel">
+      {item.description}
+    </p>
+    <div
+      class="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-whisper/60 pt-4"
+    >
+      <p class="font-mono text-[13px] text-steel">
+        {item.stack.join(" · ")}
+      </p>
+      <div class="flex items-center gap-4 text-[13px] font-medium text-steel">
+        <span class="inline-flex items-center gap-1.5">
+          <Icon name="ph:gauge" class="size-4" aria-hidden="true" />
+          {item.lighthouse}
+        </span>
+        <span class="inline-flex items-center gap-1.5">
+          <Icon name="ph:clock" class="size-4" aria-hidden="true" />
+          {item.duration}
+        </span>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Company Profile Fabrikasi Logam",
+    "industry": "Manufaktur",
+    "description": "Website profil untuk perusahaan pengelasan dan pembuatan logam, menampilkan layanan, portofolio proyek, dan fasilitas workshop.",
+    "seed": "heizuru-metal-fabrication",
+    "image": "/fabrication-portofolio.png",
+    "stack": ["Layanan Fabrikasi", "Galeri Proyek", "Responsif penuh"],
+    "lighthouse": "100",
+    "duration": "1 minggu",
+    "pages": 7,
+    "featured": true
+  },
+  {
+    "title": "Company Profile Skincare Brand",
+    "industry": "Kesehatan & Kecantikan",
+    "description": "Website profil untuk brand skincare dengan katalog produk, penjelasan ingredients, dan integrasi e-commerce.",
+    "seed": "heizuru-skincare-brand",
+    "image": "/skincare-portfolio.png",
+    "stack": ["Katalog Produk", "Info Ingredients", "Responsif penuh"],
+    "lighthouse": "100",
+    "duration": "1 minggu",
+    "pages": 7,
+    "featured": true
+  },
+  {
+    "title": "Company Profile Coffee Shop",
+    "industry": "F&B",
+    "description": "Website profil untuk kedai kopi dengan menu, galeri suasana, dan lokasi cabang.",
+    "seed": "heizuru-coffee-shop",
+    "image": "/portfolio-coffee.jpeg",
+    "stack": ["Galeri Menu", "Lokasi Cabang", "Responsif penuh"],
+    "lighthouse": "100",
+    "duration": "1 minggu",
+    "pages": 7,
+    "featured": true
+  },
+  {
+    "title": "Company Profile Bakery Store",
+    "industry": "F&B",
+    "description": "Website profil untuk toko roti dengan menu kue dan roti, galeri produk, dan informasi pemesanan.",
+    "seed": "heizuru-bakery-shop",
+    "image": "/portfolio-bakery.jpeg",
+    "stack": ["Katalog Produk", "Info Pemesanan", "Responsif penuh"],
+    "lighthouse": "100",
+    "duration": "1 minggu",
+    "pages": 7,
+    "featured": true
+  },
+  {
+    "title": "Landing Page Les TOEFL",
+    "industry": "Edukasi",
+    "description": "Halaman program belajar persiapan TOEFL dengan kurikulum, profil instruktur, dan alur pendaftaran kelas.",
+    "seed": "heizuru-course-desk",
+    "image": "/course-portfolio.png",
+    "stack": ["Kurikulum detail", "Profil pengajar", "Form pendaftaran"],
+    "lighthouse": "100",
+    "duration": "5 hari",
+    "pages": 1,
+    "featured": true
+  },
+  {
+    "title": "Company Profile Rental Mobil",
+    "industry": "Otomotif",
+    "description": "Website profil untuk layanan sewa mobil dengan daftar armada, tarif harian, dan tombol pesan cepat.",
+    "seed": "heizuru-rental-road",
+    "image": "/rentcar-portfolio.png",
+    "stack": ["Daftar armada", "Tarif per unit", "Pesan cepat"],
+    "lighthouse": "100",
+    "duration": "1 minggu",
+    "pages": 5,
+    "featured": true
+  }
+]

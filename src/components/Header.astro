@@ -1,0 +1,119 @@
+---
+import { Icon } from "astro-icon/components";
+import { NAV_LINKS, SITE } from "../config";
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-whisper/60 bg-surface/85 backdrop-blur-md"
+>
+  <div
+    class="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-5 md:h-[72px] md:px-8"
+  >
+    <a href="/" class="flex items-center gap-2.5" aria-label="Heizuru — beranda">
+      <img src="/logo.png" alt="Heizuru Logo" class="h-12 w-auto" />
+      <span class="text-lg font-bold tracking-[0.3em] text-ink uppercase">Heizuru</span>
+    </a>
+
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Navigasi utama">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? "page" : undefined}
+            class:list={[
+              "text-[15px] font-medium transition-colors",
+              isActive(link.href)
+                ? "text-ink"
+                : "text-steel hover:text-ink",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="/kontak"
+        class="inline-flex h-11 items-center justify-center rounded-full bg-ink px-6 text-[15px] font-semibold text-white transition-transform duration-300 ease-out hover:-translate-y-px motion-safe:active:translate-y-0"
+      >
+        Konsultasi
+      </a>
+    </nav>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="flex size-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-canvas lg:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Buka menu navigasi"
+    >
+      <span class="icon-open"><Icon name="ph:list" class="size-6" aria-hidden="true" /></span>
+      <span class="icon-close hidden"><Icon name="ph:x" class="size-6" aria-hidden="true" /></span>
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="hidden border-t border-whisper/60 bg-surface lg:hidden"
+    aria-label="Navigasi seluler"
+  >
+    <div class="mx-auto flex max-w-[1200px] flex-col gap-1 px-5 py-4">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? "page" : undefined}
+            class:list={[
+              "flex min-h-11 items-center rounded-xl px-4 text-[15px] font-medium transition-colors",
+              isActive(link.href)
+                ? "bg-canvas text-ink"
+                : "text-steel hover:bg-canvas hover:text-ink",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="/kontak"
+        class="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-ink px-6 text-[15px] font-semibold text-white"
+      >
+        Konsultasi
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  const closeMenu = () => {
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "Buka menu navigasi");
+    menu?.classList.add("hidden");
+    toggle?.querySelector(".icon-open")?.classList.remove("hidden");
+    toggle?.querySelector(".icon-close")?.classList.add("hidden");
+  };
+
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    if (open) {
+      closeMenu();
+    } else {
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Tutup menu navigasi");
+      menu?.classList.remove("hidden");
+      toggle.querySelector(".icon-open")?.classList.add("hidden");
+      toggle.querySelector(".icon-close")?.classList.remove("hidden");
+    }
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+</script>

@@ -1,0 +1,88 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PricingSection from "../components/PricingSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+
+const addons = [
+  {
+    name: "Integrasi Database",
+    price: "Mulai Rp 1.500.000",
+    description: "Sistem penyimpanan dan pengelolaan data dinamis sesuai kebutuhan bisnis Anda.",
+  },
+  {
+    name: "Payment Gateway",
+    price: "Mulai Rp 1.000.000",
+    description: "Integrasi pembayaran otomatis via Midtrans, Xendit, atau penyedia lainnya.",
+  },
+  {
+    name: "Sistem Booking / Reservasi",
+    price: "Mulai Rp 1.500.000",
+    description: "Fitur penjadwalan dan reservasi mandiri untuk layanan atau akomodasi.",
+  },
+  {
+    name: "Fitur Kustom Lainnya",
+    price: "Sesuai scope",
+    description: "Pengembangan fitur spesifik yang dirancang khusus untuk alur operasional Anda.",
+  },
+];
+
+---
+
+<BaseLayout
+  title="Layanan & Paket"
+  description="Paket jasa pembuatan website: Landing Page mulai Rp 1,9 juta dan Company Profile mulai Rp 4,9 juta. Scope, timeline, dan harga transparan sebelum sepakat."
+>
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 pt-16 pb-14 md:px-8 md:pt-24 md:pb-16">
+      <h1
+        class="max-w-[18ch] text-3xl sm:text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-5xl"
+      >
+        Paket jelas, harga transparan.
+      </h1>
+      <p
+        class="mt-6 max-w-[56ch] text-lg leading-relaxed text-steel"
+      >
+        Dua paket standar untuk kebutuhan paling umum, plus jalur khusus
+        untuk scope di luar itu. Semua estimasi harga final ditentukan setelah
+        kebutuhan didiskusikan.
+      </p>
+    </div>
+  </section>
+
+  <PricingSection />
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <h2
+        class="max-w-[20ch] text-3xl font-bold tracking-tight text-ink md:text-4xl"
+        data-reveal
+      >
+        Fitur Website Custom
+      </h2>
+      <div class="mt-10">
+        {
+          addons.map((addon, i) => (
+            <div
+              class="grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-2 border-t border-whisper/60 py-6 last:border-b md:grid-cols-12 md:items-center md:gap-x-8"
+              data-reveal
+              style={`--reveal-delay: ${i * 80}`}
+            >
+              <h3 class="text-lg font-bold tracking-tight text-ink md:col-span-3">
+                {addon.name}
+              </h3>
+              <p class="col-span-2 order-3 max-w-[56ch] text-[15px] leading-relaxed text-steel md:order-none md:col-span-7 md:col-start-4">
+                {addon.description}
+              </p>
+              <p class="justify-self-end font-mono text-sm text-ink md:col-span-3 md:col-start-10 md:justify-self-end">
+                {addon.price}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <FaqSection />
+</BaseLayout>

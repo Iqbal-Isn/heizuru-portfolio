@@ -1,0 +1,114 @@
+---
+import { Icon } from "astro-icon/components";
+import { NAV_LINKS, SITE, waLink } from "../config";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-ink text-white">
+  <div class="mx-auto max-w-[1200px] px-5 pt-16 pb-24 md:px-8 md:pt-20 md:pb-20">
+    <div class="grid gap-12 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-2.5">
+          <img src="/logo.png" alt="Heizuru Logo" class="h-16 w-auto brightness-0 invert" />
+        </div>
+        <p class="mt-5 max-w-[38ch] text-[15px] leading-relaxed text-zinc-400">
+          Jasa pembuatan website company profile dan landing page — cepat,
+          SEO-friendly, dan fokus konversi untuk UMKM, startup, dan personal
+          brand di Indonesia.
+        </p>
+        <a
+          href={waLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-7 inline-flex h-12 w-full items-center justify-center gap-2.5 rounded-full bg-wa px-6 text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-px hover:bg-wa-deep motion-safe:active:translate-y-0 sm:w-auto"
+        >
+          <Icon name="fa:whatsapp" class="size-5" aria-hidden="true" />
+          Chat WhatsApp
+        </a>
+      </div>
+
+      <div class="md:col-span-2">
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+          Navigasi
+        </h2>
+        <ul class="mt-5 space-y-3">
+          <li>
+            <a href="/" class="text-[15px] text-zinc-300 transition-colors hover:text-white"
+              >Beranda</a
+            >
+          </li>
+          {
+            NAV_LINKS.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[15px] text-zinc-300 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+          Layanan
+        </h2>
+        <ul class="mt-5 space-y-3">
+          <li>
+            <a href="/layanan" class="text-[15px] text-zinc-300 transition-colors hover:text-white"
+              >Landing Page</a
+            >
+          </li>
+          <li>
+            <a href="/layanan" class="text-[15px] text-zinc-300 transition-colors hover:text-white"
+              >Company Profile</a
+            >
+          </li>
+          <li>
+            <a href="/layanan" class="text-[15px] text-zinc-300 transition-colors hover:text-white"
+              >Website Custom</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+          Kontak
+        </h2>
+        <ul class="mt-5 space-y-3 text-[15px] text-zinc-300">
+          <li>
+            <a
+              href={`mailto:${SITE.email}`}
+              class="inline-flex items-center gap-2 transition-colors hover:text-white"
+            >
+              <Icon name="ph:envelope-simple" class="size-4" aria-hidden="true" />
+              {SITE.email}
+            </a>
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="fa:whatsapp" class="size-4 shrink-0" aria-hidden="true" />
+            {SITE.whatsappDisplay}
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="ph:map-pin" class="size-4 shrink-0" aria-hidden="true" />
+            Indonesia
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-14 flex flex-col gap-3 border-t border-white/10 pt-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>&copy; {year} {SITE.name}. Seluruh hak cipta dilindungi.</p>
+      <p class="font-mono text-[13px] text-zinc-600">
+        Versi 2026 — dibuat dengan teliti di Indonesia
+      </p>
+    </div>
+  </div>
+</footer>

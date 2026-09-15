@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+import { faqs } from "../data/faqs";
+---
+
+<section class="bg-canvas">
+  <div class="mx-auto max-w-[760px] px-5 py-14 md:px-8 md:py-28">
+    <h2
+      class="text-3xl font-bold tracking-tight text-ink md:text-4xl"
+      data-reveal
+    >
+      Pertanyaan yang sering ditanyakan
+    </h2>
+    <div class="mt-10">
+      {
+        faqs.map((faq) => (
+          <details class="faq group border-b border-whisper">
+            <summary class="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-6 py-5 text-[17px] font-semibold text-ink transition-colors hover:text-coral-deep [&::-webkit-details-marker]:hidden">
+              {faq.question}
+              <span class="icon-plus shrink-0 text-steel">
+                <Icon name="ph:plus" class="size-5" aria-hidden="true" />
+              </span>
+              <span class="icon-minus shrink-0 text-coral-deep">
+                <Icon name="ph:minus" class="size-5" aria-hidden="true" />
+              </span>
+            </summary>
+            <p class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-steel">
+              {faq.answer}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

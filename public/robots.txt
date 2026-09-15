@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://heizuru.id/sitemap-index.xml

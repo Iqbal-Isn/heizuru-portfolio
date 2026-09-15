@@ -1,0 +1,203 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { waLink } from "../config";
+
+const steps = [
+  {
+    number: "01",
+    title: "Riset Kebutuhan",
+    duration: "1–2 hari",
+    description:
+      "Diskusi kebutuhan via WhatsApp atau halaman kontak: tujuan website, target audiens, konten yang tersedia, dan referensi yang disukai.",
+    deliverables: ["Kesepakatan scope & harga", "Struktur halaman awal"],
+  },
+  {
+    number: "02",
+    title: "Desain",
+    duration: "2–5 hari",
+    description:
+      "Wireframe cepat untuk konsensus struktur, lalu mockup visual lengkap. Desain disetujui dulu sebelum situs mulai dibangun.",
+    deliverables: ["Wireframe struktur", "Mockup final yang disetujui"],
+  },
+  {
+    number: "03",
+    title: "Pengerjaan",
+    duration: "2 hari – 1,5 minggu",
+    description:
+      "Tahap pembangunan situs. Anda mendapat link preview yang bisa dipantau kapan saja — tidak perlu menunggu sampai akhir.",
+    deliverables: ["Link preview langsung", "Hasil yang mengikuti desain"],
+  },
+  {
+    number: "04",
+    title: "Uji Coba & Review",
+    duration: "1–2 hari",
+    description:
+      "Pengujian lintas perangkat dan browser, audit performa dan aksesibilitas, serta review konten terakhir bersama Anda.",
+    deliverables: ["Laporan skor performa", "Daftar perbaikan selesai"],
+  },
+  {
+    number: "05",
+    title: "Peluncuran & Serah Terima",
+    duration: "1 hari",
+    description:
+      "Website di-online-kan, domain dihubungkan, HTTPS aktif, dan sitemap terkirim ke mesin pencari. Disertai dokumentasi singkat cara meminta update.",
+    deliverables: ["Website live di domain Anda", "Dokumentasi singkat"],
+  },
+];
+
+const estimates = [
+  {
+    project: "Landing Page",
+    total: "Total 5–7 hari kerja",
+    phases: [
+      { name: "Riset", duration: "1 hari" },
+      { name: "Desain", duration: "1–2 hari" },
+      { name: "Pembangunan", duration: "2–3 hari" },
+      { name: "Uji Coba", duration: "1 hari" },
+      { name: "Peluncuran", duration: "1 hari" },
+    ],
+  },
+  {
+    project: "Company Profile",
+    total: "Total 2–3 minggu",
+    phases: [
+      { name: "Riset", duration: "1–2 hari" },
+      { name: "Desain", duration: "3–5 hari" },
+      { name: "Pembangunan", duration: "1–1,5 minggu" },
+      { name: "Uji Coba", duration: "1–2 hari" },
+      { name: "Peluncuran", duration: "1 hari" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Proses Kerja"
+  description="Alur kerja pembuatan website dalam lima tahap:requirement, desain, pembangunan, uji coba, dan peluncuran — dengan timeline yang jelas di setiap tahap."
+>
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 pt-16 pb-14 md:px-8 md:pt-24 md:pb-16">
+      <h1
+        class="max-w-[18ch] text-3xl sm:text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-5xl"
+      >
+        Lima tahap, tanpa tebak-tebakan.
+      </h1>
+      <p class="mt-6 max-w-[56ch] text-lg leading-relaxed text-steel">
+        Setiap tahap punya deliverable yang jelas. Anda selalu tahu proyek
+        sedang ada di mana dan apa yang berikutnya.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
+      <ol class="relative ml-2 space-y-12 border-l border-whisper pl-8 md:ml-6 md:space-y-16 md:pl-14">
+        {
+          steps.map((step, i) => (
+            <li
+              class="relative"
+              data-reveal
+              style={`--reveal-delay: ${Math.min(i, 3) * 90}`}
+            >
+              <span class="absolute top-0 -left-[47px] flex size-9 items-center justify-center rounded-full bg-ink font-mono text-[13px] font-medium text-coral md:-left-[79px] md:size-12 md:text-sm">
+                {step.number}
+              </span>
+              <div class="grid gap-4 md:grid-cols-12 md:gap-8">
+                <div class="md:col-span-5">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <h2 class="text-2xl font-bold tracking-tight text-ink">
+                      {step.title}
+                    </h2>
+                    <span class="rounded-full border border-whisper bg-surface px-3 py-1 font-mono text-xs text-steel">
+                      {step.duration}
+                    </span>
+                  </div>
+                  <p class="mt-3 max-w-[48ch] text-[15px] leading-relaxed text-steel">
+                    {step.description}
+                  </p>
+                </div>
+                <div class="md:col-span-6 md:col-start-7">
+                  <div class="rounded-2xl border border-whisper/60 bg-surface p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-steel">
+                      Deliverable
+                    </p>
+                    <ul class="mt-4 space-y-2.5">
+                      {step.deliverables.map((d) => (
+                        <li class="flex items-start gap-2.5 text-sm text-ink">
+                          <Icon
+                            name="ph:check"
+                            class="mt-0.5 size-4 shrink-0 text-coral-deep"
+                            aria-hidden="true"
+                          />
+                          {d}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <h2
+        class="max-w-[22ch] text-3xl font-bold tracking-tight text-ink md:text-4xl"
+        data-reveal
+      >
+        Estimasi timeline per tipe project
+      </h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {
+          estimates.map((estimate, i) => (
+            <div
+              class="rounded-2xl bg-ink p-8 text-white"
+              data-reveal
+              style={`--reveal-delay: ${i * 110}`}
+            >
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 class="text-xl font-bold tracking-tight">
+                  {estimate.project}
+                </h3>
+                <p class="font-mono text-[13px] text-coral">{estimate.total}</p>
+              </div>
+              <ul class="mt-6 space-y-0">
+                {estimate.phases.map((phase) => (
+                  <li class="flex items-center justify-between gap-4 border-t border-white/10 py-3 text-sm">
+                    <span class="text-zinc-300">{phase.name}</span>
+                    <span class="font-mono text-[13px] text-zinc-400">
+                      {phase.duration}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <p
+        class="mt-8 max-w-[56ch] text-[15px] leading-relaxed text-steel"
+        data-reveal
+      >
+        Durasi bisa lebih pendek jika konten sudah siap, dan lebih panjang
+        jika scope berkembang di tengah jalan — perubahan selalu disepakati
+        dulu sebelum dikerjakan.
+      </p>
+      <a
+        href={waLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-9 inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-full bg-wa px-7 text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-px hover:bg-wa-deep motion-safe:active:translate-y-0 sm:w-auto"
+        data-reveal
+      >
+        <Icon name="fa:whatsapp" class="size-5" aria-hidden="true" />
+        Mulai Tahap Pertama
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,180 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { waLink } from "../config";
+
+const principles = [
+  {
+    number: "01",
+    title: "Performa bukan bonus, tapi fondasi",
+    description:
+      "Setiap detik pemuatan berarti pengunjung yang hilang. Website dibuat agar tampil cepat di semua perangkat — terutama HP, karena mayoritas calon klien Indonesia mengakses dari ponsel.",
+  },
+  {
+    number: "02",
+    title: "Website yang mengonversi, bukan sekadar jadi",
+    description:
+      "Tampilan bagus tidak cukup. Struktur konten, hierarki visual, dan tombol aksi dirancang untuk mengarahkan pengunjung melakukan satu hal: menghubungi Anda.",
+  },
+  {
+    number: "03",
+    title: "Jujur soal scope dan batas",
+    description:
+      "Yang bisa dan tidak bisa dikerjakan dikatakan di awal. Jika kebutuhan Anda di luar jangkauan — misalnya aplikasi web kompleks — Anda akan dirujuk ke solusi yang lebih tepat.",
+  },
+];
+
+const outcomes = [
+  {
+    icon: "ph:lightning",
+    title: "Pengunjung tidak kabur karena lambat",
+    description:
+      "Halaman tampil dalam sepersekian detik. Mau dibuka dari HP jadul, wifi kantor yang lambat, atau sinyal di jalan yang naik-turun — tetap terasa ringan.",
+  },
+  {
+    icon: "ph:wallet",
+    title: "Tidak ada tagihan yang diam-diam datang",
+    description:
+      "Setelah website jadi, tidak ada iuran bulanan yang tersembunyi. Hosting untuk situs seperti ini mendekati nol, dan tidak ada lisensi yang harus diperpanjang diam-diam.",
+  },
+  {
+    icon: "ph:shield-check",
+    title: "Lebih aman dari gangguan luar",
+    description:
+      "Website kecil yang dibangun dengan benar tidak menarik jadi target peretas. Tidak ada update keamanan rutin yang harus Anda ingat setiap minggu.",
+  },
+  {
+    icon: "ph:note-pencil",
+    title: "Bisa diubah sendiri kapan pun perlu",
+    description:
+      "Tambah halaman, ganti foto produk, atau ubah harga promo — bisa dipelajari sendiri dalam satu sesi singkat. Atau kalau tidak ingin repot, tinggal minta Heizuru.",
+  },
+];
+---
+
+<BaseLayout
+  title="Tentang Heizuru"
+  description="Kenali Heizuru — studio web satu orang yang fokus pada performa dan konversi. Keahlian: company profile multi-halaman, landing page konversi, optimasi performa, dan SEO on-page."
+>
+  <section class="relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1800&q=80');"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-white/80 md:bg-gradient-to-r md:from-white md:via-white/75 md:to-transparent"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div
+      class="relative mx-auto grid max-w-[1200px] gap-12 px-5 py-16 md:grid-cols-12 md:px-8 md:py-24 lg:gap-16"
+    >
+      <div class="md:col-span-7 lg:col-span-6">
+        <h1
+          class="max-w-[16ch] text-3xl sm:text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-5xl lg:text-6xl"
+        >
+          Studio satu orang, standar studio besar.
+        </h1>
+        <p class="mt-6 max-w-[54ch] text-lg leading-relaxed text-steel">
+          Heizuru adalah jasa pembuatan website yang dijalankan satu orang:
+          desain, pembangunan, hingga optimasi dikerjakan langsung tanpa
+          perantara. Artinya komunikasi lebih cepat, tanggung jawab tidak
+          dilempar, dan detail tidak hilang di tangan orang ketiga.
+        </p>
+        <p class="mt-5 max-w-[54ch] text-[15px] leading-relaxed text-steel">
+          Fokusnya sederhana: company profile dan landing page untuk UMKM,
+          startup, dan personal brand yang butuh website bekerja keras untuk
+          bisnis mereka — bukan sekadar tempat parkir nama domain.
+        </p>
+        <a
+          href={waLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-9 inline-flex h-13 w-full items-center justify-center gap-2.5 rounded-full bg-wa px-7 text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-px hover:bg-wa-deep motion-safe:active:translate-y-0 sm:w-auto"
+        >
+          <Icon name="fa:whatsapp" class="size-5" aria-hidden="true" />
+          Diskusi Langsung
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <h2
+        class="max-w-[22ch] text-3xl font-bold tracking-tight text-ink md:text-4xl"
+        data-reveal
+      >
+        Cara berpikir yang memandu setiap proyek
+      </h2>
+      <div class="mt-12 space-y-12 md:space-y-16">
+        {
+          principles.map((principle, i) => (
+            <div
+              class="grid gap-4 border-t border-whisper pt-8 md:grid-cols-12 md:gap-8"
+              data-reveal
+              style={`--reveal-delay: ${i * 90}`}
+            >
+              <p class="font-mono text-sm text-steel md:col-span-2">
+                {principle.number}
+              </p>
+              <h3 class="max-w-[24ch] text-2xl font-bold tracking-tight text-ink md:col-span-5 md:text-3xl">
+                {principle.title}
+              </h3>
+              <p class="max-w-[52ch] text-[15px] leading-relaxed text-steel md:col-span-5">
+                {principle.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-28">
+      <div class="grid gap-12 md:grid-cols-12">
+        <div class="md:col-span-5">
+          <h2
+            class="max-w-[16ch] text-3xl font-bold tracking-tight text-ink md:text-4xl"
+            data-reveal
+          >
+            Yang Anda rasakan setelah website jadi
+          </h2>
+          <p
+            class="mt-5 max-w-[48ch] text-[15px] leading-relaxed text-steel"
+            data-reveal
+          >
+            Tujuan Heizuru bukan cuma website yang tampak bagus saat pertama
+            di-online-kan — tapi yang tetap bekerja dengan tenang berbulan-bulan
+            kemudian, tanpa Anda harus pusing memikirkan hal-hal teknis.
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 md:col-span-7">
+          {
+            outcomes.map((benefit, i) => (
+              <div
+                class="rounded-2xl border border-whisper/60 bg-canvas p-6"
+                data-reveal
+                style={`--reveal-delay: ${i * 90}`}
+              >
+                <span class="flex size-11 items-center justify-center rounded-full bg-ink text-coral">
+                  <Icon name={benefit.icon} class="size-5" aria-hidden="true" />
+                </span>
+                <h3 class="mt-5 text-base font-bold tracking-tight text-ink">
+                  {benefit.title}
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed text-steel">
+                  {benefit.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

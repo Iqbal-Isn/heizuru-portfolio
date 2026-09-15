@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PortfolioCard from "../components/PortfolioCard.astro";
+import { portfolioItems } from "../data/portfolio";
+import { waLink } from "../config";
+---
+
+<BaseLayout
+  title="Portofolio"
+  description="Studi kasus pembuatan website dari berbagai industri: travel, furnitur, konstruksi, kesehatan, edukasi, properti, otomotif, dan consulting."
+>
+  <section class="bg-surface">
+    <div class="mx-auto max-w-[1200px] px-5 pt-16 pb-14 md:px-8 md:pt-24 md:pb-16">
+      <h1
+        class="max-w-[18ch] text-3xl sm:text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-5xl"
+      >
+        Delapan industri, satu standar kualitas.
+      </h1>
+      <p class="mt-6 max-w-[56ch] text-lg leading-relaxed text-steel">
+        Setiap konsep dibangun dengan pendekatan yang sama: struktur konten
+        yang menjual, desain yang rapi, dan performa yang terukur.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-canvas">
+    <div class="mx-auto max-w-[1200px] px-5 py-14 md:px-8 md:py-20">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          portfolioItems.map((item, i) => (
+            <div data-reveal style={`--reveal-delay: ${(i % 3) * 110}`}>
+              <PortfolioCard item={item} />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="mt-14 flex flex-col gap-6 rounded-2xl border border-dashed border-whisper bg-surface p-8 md:flex-row md:items-center md:justify-between md:p-10"
+        data-reveal
+      >
+        <div>
+          <h2 class="text-xl font-bold tracking-tight text-ink">
+            Saatnya giliran Anda
+          </h2>
+          <p class="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-steel">
+            Ingin menjadi project berikutnya di portofolio ini? Diskusikan
+            kebutuhan Anda — gratis dikonsultasikan dulu, tanpa komitmen.
+          </p>
+        </div>
+        <a
+          href={waLink("Halo Heizuru, saya ingin mendiskusikan project website untuk industri saya.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex h-12 w-full shrink-0 items-center justify-center gap-2.5 rounded-full bg-wa px-6 text-[15px] font-semibold text-white transition-all duration-300 ease-out hover:-translate-y-px hover:bg-wa-deep motion-safe:active:translate-y-0 md:w-auto"
+        >
+          <Icon name="fa:whatsapp" class="size-5" aria-hidden="true" />
+          Diskusikan Project
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
