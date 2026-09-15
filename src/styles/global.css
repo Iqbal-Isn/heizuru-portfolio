@@ -54,37 +54,33 @@ body {
   }
 }
 
-details.faq summary::-webkit-details-marker {
-  display: none;
-}
-
-details.faq summary .icon-plus,
-details.faq summary .icon-minus {
-  transition: transform 0.4s var(--ease-out-expo), opacity 0.4s var(--ease-out-expo);
+.faq-toggle .icon-plus,
+.faq-toggle .icon-minus {
+  transition: transform 0.5s var(--ease-out-expo), opacity 0.5s var(--ease-out-expo);
   grid-area: 1 / 1;
 }
 
-details.faq summary .icon-wrapper {
+.faq-toggle .icon-wrapper {
   display: grid;
   place-items: center;
 }
 
-details.faq summary .icon-plus {
+.faq-toggle[aria-expanded="false"] .icon-plus {
   opacity: 1;
   transform: rotate(0deg);
 }
 
-details.faq summary .icon-minus {
+.faq-toggle[aria-expanded="false"] .icon-minus {
   opacity: 0;
   transform: rotate(-90deg);
 }
 
-details.faq[open] summary .icon-plus {
+.faq-toggle[aria-expanded="true"] .icon-plus {
   opacity: 0;
   transform: rotate(90deg);
 }
 
-details.faq[open] summary .icon-minus {
+.faq-toggle[aria-expanded="true"] .icon-minus {
   opacity: 1;
   transform: rotate(0deg);
 }

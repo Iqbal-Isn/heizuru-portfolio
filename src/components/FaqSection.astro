@@ -14,8 +14,8 @@ import { faqs } from "../data/faqs";
     <div class="mt-10">
       {
         faqs.map((faq) => (
-          <details class="faq group border-b border-whisper">
-            <summary class="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-6 py-5 text-[17px] font-semibold text-ink transition-colors hover:text-coral-deep [&::-webkit-details-marker]:hidden">
+          <div class="faq-item group border-b border-whisper">
+            <button class="faq-toggle flex w-full min-h-[60px] cursor-pointer items-center justify-between gap-6 py-5 text-left text-[17px] font-semibold text-ink transition-colors hover:text-coral-deep" aria-expanded="false">
               {faq.question}
               <div class="icon-wrapper shrink-0">
                 <span class="icon-plus text-steel">
@@ -25,13 +25,64 @@ import { faqs } from "../data/faqs";
                   <Icon name="ph:minus" class="size-5" aria-hidden="true" />
                 </span>
               </div>
-            </summary>
-            <p class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-steel">
-              {faq.answer}
-            </p>
-          </details>
+            </button>
+            <div class="faq-content grid transition-all duration-500 ease-out opacity-0" style="grid-template-rows: 0fr;">
+              <div class="overflow-hidden">
+                <p class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-steel transition-transform duration-500 ease-out -translate-y-4">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
+          </div>
         ))
       }
     </div>
   </div>
 </section>
+
+<script>
+  const faqs = document.querySelectorAll('.faq-item');
+  
+  faqs.forEach(faq => {
+    const btn = faq.querySelector('.faq-toggle');
+    const content = faq.querySelector('.faq-content') as HTMLElement;
+    const text = faq.querySelector('p') as HTMLElement;
+    
+    btn?.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      
+      // Close all other FAQs
+      faqs.forEach(otherFaq => {
+        if (otherFaq !== faq) {
+          const otherBtn = otherFaq.querySelector('.faq-toggle');
+          const otherContent = otherFaq.querySelector('.faq-content') as HTMLElement;
+          const otherText = otherFaq.querySelector('p') as HTMLElement;
+          
+          otherBtn?.setAttribute('aria-expanded', 'false');
+          if (otherContent) {
+            otherContent.style.gridTemplateRows = '0fr';
+            otherContent.classList.replace('opacity-100', 'opacity-0');
+          }
+          if (otherText) {
+            otherText.classList.replace('translate-y-0', '-translate-y-4');
+          }
+        }
+      });
+      
+      // Toggle current FAQ
+      if (isExpanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        content.style.gridTemplateRows = '0fr';
+        content.classList.replace('opacity-100', 'opacity-0');
+        text.classList.replace('translate-y-0', '-translate-y-4');
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        content.style.gridTemplateRows = '1fr';
+        content.classList.remove('opacity-0');
+        content.classList.add('opacity-100');
+        text.classList.remove('-translate-y-4');
+        text.classList.add('translate-y-0');
+      }
+    });
+  });
+</script>
