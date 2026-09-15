@@ -46,44 +46,49 @@ const isActive = (href: string) =>
     <button
       id="menu-toggle"
       type="button"
-      class="flex size-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-canvas lg:hidden"
+      class="mobile-toggle flex size-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-canvas lg:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
       aria-label="Buka menu navigasi"
     >
-      <span class="icon-open"><Icon name="ph:list" class="size-6" aria-hidden="true" /></span>
-      <span class="icon-close hidden"><Icon name="ph:x" class="size-6" aria-hidden="true" /></span>
+      <div class="grid place-items-center">
+        <span class="icon-open [grid-area:1/1] transition-all duration-500 ease-out"><Icon name="ph:list" class="size-6" aria-hidden="true" /></span>
+        <span class="icon-close [grid-area:1/1] opacity-0 -rotate-90 scale-50 transition-all duration-500 ease-out"><Icon name="ph:x" class="size-6" aria-hidden="true" /></span>
+      </div>
     </button>
   </div>
 
   <nav
     id="mobile-menu"
-    class="hidden border-t border-whisper/60 bg-surface lg:hidden"
+    class="grid transition-all duration-400 ease-out bg-surface lg:hidden"
+    style="grid-template-rows: 0fr; opacity: 0; visibility: hidden;"
     aria-label="Navigasi seluler"
   >
-    <div class="mx-auto flex max-w-[1200px] flex-col gap-1 px-5 py-4">
-      {
-        NAV_LINKS.map((link) => (
-          <a
-            href={link.href}
-            aria-current={isActive(link.href) ? "page" : undefined}
-            class:list={[
-              "flex min-h-11 items-center rounded-xl px-4 text-[15px] font-medium transition-colors",
-              isActive(link.href)
-                ? "bg-canvas text-ink"
-                : "text-steel hover:bg-canvas hover:text-ink",
-            ]}
-          >
-            {link.label}
-          </a>
-        ))
-      }
-      <a
-        href="/kontak"
-        class="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-ink px-6 text-[15px] font-semibold text-white"
-      >
-        Konsultasi
-      </a>
+    <div class="overflow-hidden">
+      <div class="mx-auto flex max-w-[1200px] flex-col gap-1 px-5 py-4 border-t border-whisper/60">
+        {
+          NAV_LINKS.map((link) => (
+            <a
+              href={link.href}
+              aria-current={isActive(link.href) ? "page" : undefined}
+              class:list={[
+                "flex min-h-11 items-center rounded-xl px-4 text-[15px] font-medium transition-colors",
+                isActive(link.href)
+                  ? "bg-canvas text-ink"
+                  : "text-steel hover:bg-canvas hover:text-ink",
+              ]}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <a
+          href="/kontak"
+          class="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-ink px-6 text-[15px] font-semibold text-white"
+        >
+          Konsultasi
+        </a>
+      </div>
     </div>
   </nav>
 </header>
@@ -95,9 +100,16 @@ const isActive = (href: string) =>
   const closeMenu = () => {
     toggle?.setAttribute("aria-expanded", "false");
     toggle?.setAttribute("aria-label", "Buka menu navigasi");
-    menu?.classList.add("hidden");
-    toggle?.querySelector(".icon-open")?.classList.remove("hidden");
-    toggle?.querySelector(".icon-close")?.classList.add("hidden");
+    if (menu) {
+      menu.style.gridTemplateRows = '0fr';
+      menu.style.opacity = '0';
+      // Wait for transition to finish before hiding
+      setTimeout(() => {
+        if (toggle?.getAttribute("aria-expanded") === "false") {
+          menu.style.visibility = 'hidden';
+        }
+      }, 400);
+    }
   };
 
   toggle?.addEventListener("click", () => {
@@ -107,9 +119,11 @@ const isActive = (href: string) =>
     } else {
       toggle.setAttribute("aria-expanded", "true");
       toggle.setAttribute("aria-label", "Tutup menu navigasi");
-      menu?.classList.remove("hidden");
-      toggle.querySelector(".icon-open")?.classList.add("hidden");
-      toggle.querySelector(".icon-close")?.classList.remove("hidden");
+      if (menu) {
+        menu.style.visibility = 'visible';
+        menu.style.gridTemplateRows = '1fr';
+        menu.style.opacity = '1';
+      }
     }
   });
 
