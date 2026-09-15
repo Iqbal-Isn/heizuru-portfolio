@@ -85,12 +85,33 @@ body {
   transform: rotate(0deg);
 }
 
+.mobile-toggle .icon-open,
+.mobile-toggle .icon-close {
+  transition: transform 0.5s var(--ease-out-expo), opacity 0.5s var(--ease-out-expo);
+  grid-area: 1 / 1;
+}
+
+.mobile-toggle .icon-wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.mobile-toggle[aria-expanded="false"] .icon-open {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.mobile-toggle[aria-expanded="false"] .icon-close {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
 .mobile-toggle[aria-expanded="true"] .icon-open {
   opacity: 0;
-  transform: rotate(90deg) scale(0.5);
+  transform: rotate(90deg);
 }
 
 .mobile-toggle[aria-expanded="true"] .icon-close {
   opacity: 1;
-  transform: rotate(0deg) scale(1);
+  transform: rotate(0deg);
 }
