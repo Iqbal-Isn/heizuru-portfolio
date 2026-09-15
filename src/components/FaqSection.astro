@@ -17,12 +17,14 @@ import { faqs } from "../data/faqs";
           <details class="faq group border-b border-whisper">
             <summary class="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-6 py-5 text-[17px] font-semibold text-ink transition-colors hover:text-coral-deep [&::-webkit-details-marker]:hidden">
               {faq.question}
-              <span class="icon-plus shrink-0 text-steel">
-                <Icon name="ph:plus" class="size-5" aria-hidden="true" />
-              </span>
-              <span class="icon-minus shrink-0 text-coral-deep">
-                <Icon name="ph:minus" class="size-5" aria-hidden="true" />
-              </span>
+              <div class="icon-wrapper shrink-0">
+                <span class="icon-plus text-steel">
+                  <Icon name="ph:plus" class="size-5" aria-hidden="true" />
+                </span>
+                <span class="icon-minus text-coral-deep">
+                  <Icon name="ph:minus" class="size-5" aria-hidden="true" />
+                </span>
+              </div>
             </summary>
             <p class="max-w-[62ch] pb-6 text-[15px] leading-relaxed text-steel">
               {faq.answer}

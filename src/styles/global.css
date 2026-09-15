@@ -58,18 +58,33 @@ details.faq summary::-webkit-details-marker {
   display: none;
 }
 
+details.faq summary .icon-plus,
+details.faq summary .icon-minus {
+  transition: transform 0.4s var(--ease-out-expo), opacity 0.4s var(--ease-out-expo);
+  grid-area: 1 / 1;
+}
+
+details.faq summary .icon-wrapper {
+  display: grid;
+  place-items: center;
+}
+
 details.faq summary .icon-plus {
-  display: inline-flex;
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
 details.faq summary .icon-minus {
-  display: none;
+  opacity: 0;
+  transform: rotate(-90deg);
 }
 
 details.faq[open] summary .icon-plus {
-  display: none;
+  opacity: 0;
+  transform: rotate(90deg);
 }
 
 details.faq[open] summary .icon-minus {
-  display: inline-flex;
+  opacity: 1;
+  transform: rotate(0deg);
 }
