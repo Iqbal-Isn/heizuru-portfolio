@@ -25,3 +25,7 @@ skills-lock.json
 .env
 .env.*
 !.env.example
+
+crop_favicon.py
+ui.jpg
+DESIGN.md
