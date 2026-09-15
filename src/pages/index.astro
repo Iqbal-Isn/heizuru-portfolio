@@ -1,11 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 import PortfolioCard from "../components/PortfolioCard.astro";
 import PricingSection from "../components/PricingSection.astro";
 import FaqSection from "../components/FaqSection.astro";
 import { portfolioItems } from "../data/portfolio";
 import { testimonials } from "../data/testimonials";
+import heroBg from "../assets/hero-bg.jpg";
 import { waLink } from "../config";
 
 const featured = portfolioItems.filter((item) => item.featured).slice(0, 6);
@@ -64,12 +66,16 @@ const advantages = [
   description="Website company profile dan landing page yang cepat, SEO-friendly, dan fokus konversi. Skor performa tervalidasi, hasil yang bisa diukur."
 >
   <section class="relative overflow-hidden">
-    <div
-      class="absolute inset-0 bg-cover bg-center"
-      style="background-image: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1800&q=80');"
-      aria-hidden="true"
-    >
-    </div>
+    <Image
+      src={heroBg}
+      alt="Latar belakang hero"
+      width={1800}
+      height={1200}
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
     <div
       class="absolute inset-0 bg-white/80 md:bg-gradient-to-r md:from-white md:via-white/75 md:to-transparent"
       aria-hidden="true"
