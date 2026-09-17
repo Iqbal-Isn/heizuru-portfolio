@@ -11,13 +11,14 @@ export interface PricingPackage {
 export const pricingPackages: PricingPackage[] = [
   {
     name: "Landing Page",
-    price: "Rp 1.900.000",
+    price: "Rp 600.000",
     note: "mulai dari",
     tagline: "Untuk kampanye, produk, atau layanan tunggal",
-    timeline: "5–7 hari kerja",
+    timeline: "1–2 hari kerja",
     featured: false,
     features: [
       "1 halaman desain kustom, responsif penuh",
+      "Gratis hosting dan domain .com 1 tahun",
       "Copywriting dasar & struktur konten konversi",
       "Tombol WhatsApp click-to-chat",
       "SEO on-page dasar (meta, OG image, sitemap)",
@@ -27,10 +28,10 @@ export const pricingPackages: PricingPackage[] = [
   },
   {
     name: "Company Profile",
-    price: "Rp 4.900.000",
+    price: "Rp 1.200.000",
     note: "mulai dari",
     tagline: "Website lengkap 5–7 halaman untuk kredibilitas bisnis",
-    timeline: "2–3 minggu",
+    timeline: "3–5 hari kerja",
     featured: true,
     features: [
       "Semua yang ada di paket Landing Page",
