@@ -11,24 +11,31 @@ import { SITE, waLink } from "../config";
 interface Props {
   title: string;
   description: string;
+  image?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image = "/logo.png" } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = title.includes(SITE.name) ? title : `${title} — ${SITE.name}`;
+const ogImage = new URL(image, Astro.site);
+const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: SITE.name,
   url: SITE.url,
+  logo: new URL("/logo.png", Astro.site).toString(),
+  image: ogImage.toString(),
   email: SITE.email,
   telephone: `+${SITE.whatsapp}`,
   areaServed: "Indonesia",
+  priceRange: "Rp 900.000 - Rp 5.000.000",
   description: SITE.description,
   makesOffer: [
     {
       "@type": "Offer",
+      price: "900000",
+      priceCurrency: "IDR",
       itemOffered: {
         "@type": "Service",
         name: "Pembuatan Landing Page",
@@ -36,6 +43,8 @@ const schema = {
     },
     {
       "@type": "Offer",
+      price: "1500000",
+      priceCurrency: "IDR",
       itemOffered: {
         "@type": "Service",
         name: "Pembuatan Website Company Profile",
@@ -57,11 +66,16 @@ const schema = {
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="id_ID" />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>

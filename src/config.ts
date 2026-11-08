@@ -1,8 +1,8 @@
 export const SITE = {
   name: "Heizuru",
-  title: "Heizuru — Jasa Pembuatan Website Company Profile & Landing Page",
+  title: "Heizuru | Jasa Pembuatan Website Company Profile & Landing Page",
   description:
-    "Jasa pembuatan website company profile dan landing page yang cepat, SEO-friendly, dan fokus konversi. Skor performa tinggi, hasil tervalidasi alat audit independen.",
+    "Jasa pembuatan website profesional untuk UMKM dan bisnis di Indonesia. Spesialis company profile dan landing page yang cepat, ramah SEO Google, dan terhubung ke WhatsApp.",
   url: "https://heizuru.id",
   email: "halo@heizuru.id",
   whatsapp: "6281234567890",
@@ -18,6 +18,5 @@ export const NAV_LINKS = [
   { href: "/tentang", label: "Tentang" },
   { href: "/layanan", label: "Layanan" },
   { href: "/portofolio", label: "Portofolio" },
-  { href: "/proses", label: "Proses" },
   { href: "/kontak", label: "Kontak" },
 ];

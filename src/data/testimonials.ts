@@ -13,13 +13,13 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Saya sering minta second opinion soal struktur dan optimasi performa. Analisisnya tajam dan selalu diberi alasan — bukan sekadar disuruh ganti tanpa penjelasan.",
+      "Saya sering minta second opinion soal struktur dan optimasi performa. Analisisnya tajam dan selalu diberi alasan, bukan sekadar disuruh ganti tanpa penjelasan.",
     name: "Sinta Mahardika",
     role: "UI/UX Designer",
   },
   {
     quote:
-      "Dia tipe yang lebih banyak mendengar dulu baru bertindak. Setelah lihat brief, kami dapat website yang benar-benar sesuai kebutuhan — bukan template asal jadi.",
+      "Dia tipe yang lebih banyak mendengar dulu baru bertindak. Setelah lihat brief, kami dapat website yang benar-benar sesuai kebutuhan, bukan template asal jadi.",
     name: "Bambang Suryadi",
     role: "Konsultan Senior",
   },

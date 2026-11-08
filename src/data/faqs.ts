@@ -5,28 +5,33 @@ export interface Faq {
 
 export const faqs: Faq[] = [
   {
-    question: "Berapa lama waktu pengerjaan?",
+    question: "Apa saja yang perlu saya siapkan sebelum mulai pembuatan website?",
     answer:
-      "Landing page umumnya selesai dalam 5–7 hari kerja. Company profile 5–7 halaman membutuhkan 2–3 minggu. Keduanya tergantung pada kesiapan konten dan kecepatan feedback di sisi Anda.",
+      "Cukup siapkan informasi profil usaha atau penjelasan layanan/produk, nomor kontak WhatsApp, serta file logo bisnis Anda (jika ada). Perlu diketahui bahwa kami tidak melayani jasa pembuatan logo dari awal (bisa menggunakan teks nama brand yang rapi jika belum punya). Untuk materi tulisan (copywriting) dan stok foto pendukung, kami siap bantu susun dan rapikan agar website langsung siap tampil profesional.",
   },
   {
-    question: "Apakah harga sudah termasuk domain dan hosting?",
+    question: "Berapa lama proses pembuatan websitenya?",
     answer:
-      "Belum. Domain dibeli atas nama Anda (sekitar Rp 150–300 ribu/tahun) dan saya bantu prosesnya. Untuk hosting, situs statis bisa di-hosting gratis di Cloudflare Pages atau Vercel — tanpa biaya bulanan.",
+      "Untuk Landing Page umumnya selesai dalam 1–2 hari kerja, sedangkan Company Profile memakan waktu 3–5 hari kerja setelah materi awal disepakati. Anda juga akan mendapatkan link pratinjau langsung sehingga bisa melihat perkembangan website kapan saja.",
   },
   {
-    question: "Saya belum punya konten dan foto, apakah bisa tetap dikerjakan?",
+    question: "Apakah ada biaya langganan bulanan setelah website online?",
     answer:
-      "Bisa. Struktur konten dan panduan foto akan disiapkan di awal, dan copywriting bisa diambil sebagai add-on. Sementara itu, slot foto memakai placeholder rapi sampai materi asli tersedia.",
+      "Tidak ada biaya bulanan sama sekali. Paket sudah termasuk gratis domain .com dan hosting untuk 1 tahun pertama. Website dibuat dengan teknologi modern tanpa biaya server bulanan, jadi setelah tahun pertama Anda hanya perlu memperpanjang biaya domain standar tahunan.",
   },
   {
-    question: "Bagaimana sistem revisinya?",
+    question: "Saya gaptek dan belum punya pengalaman mengelola website, apakah dibantu?",
     answer:
-      "Setiap paket sudah termasuk 2–3 putaran revisi pada tahap desain dan pembangunan. Perubahan scope besar setelah desain disetujui akan dihitung sebagai pekerjaan tambahan, selalu disepakati dulu sebelum dikerjakan.",
+      "Sangat dibantu. Anda tidak perlu paham coding atau teknis hosting sama sekali. Seluruh proses teknis mulai dari pemilihan domain, pembuatan tampilan, hingga website bisa diakses publik kami yang tangani sepenuhnya dari awal sampai siap pakai.",
   },
   {
-    question: "Kenapa tidak pakai CMS yang berat saja?",
+    question: "Apakah tampilan website rapi di HP dan bisa langsung chat ke WhatsApp?",
     answer:
-      "Untuk kebutuhan company profile yang kontennya tidak berubah setiap hari, CMS justru menambah beban: pembaruan rutin, celah keamanan, dan biaya hosting. Pendekatan yang dipakai Heizuru menghasilkan situs yang lebih cepat dimuat, lebih aman, dan hampir bebas biaya operasional.",
+      "Pasti. Mayoritas calon pembeli mengakses lewat smartphone, sehingga tampilan website kami rancang 100% responsif, ringan dimuat, serta dilengkapi tombol call-to-action yang langsung mengarahkan pengunjung ke obrolan WhatsApp bisnis Anda dalam satu klik.",
+  },
+  {
+    question: "Bagaimana jika ada perubahan atau revisi setelah website selesai?",
+    answer:
+      "Setiap paket sudah mencakup 2–3 putaran revisi sebelum peluncuran resmi. Setelah website live, kami juga tetap siap membantu jika ada pembaruan info penting seperti perubahan nomor kontak, jam operasional, atau pembaruan teks sederhana.",
   },
 ];
